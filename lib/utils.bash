@@ -2,7 +2,6 @@
 
 set -euo pipefail
 
-# TODO: Ensure this is the correct GitHub homepage where releases can be downloaded for kubelogin.
 GH_REPO="https://github.com/Azure/kubelogin"
 TOOL_NAME="kubelogin"
 TOOL_TEST="kubelogin --version"
@@ -31,8 +30,6 @@ list_github_tags() {
 }
 
 list_all_versions() {
-  # TODO: Adapt this. By default we simply list the tag names from GitHub releases.
-  # Change this function if kubelogin has other means of determining installable versions.
   list_github_tags
 }
 
@@ -40,9 +37,30 @@ download_release() {
   local version filename url
   version="$1"
   filename="$2"
+  platform="unsupported" # filled by `case` below
+  arch="unsupported"     # filled by `case` below
 
-  # TODO: Adapt the release URL convention for kubelogin
-  url="$GH_REPO/archive/v${version}.tar.gz"
+  case "$(uname)" in
+  "Linux")
+    platform="linux"
+    ;;
+  "Darwin")
+    platform="darwin"
+    ;;
+  esac
+
+  case "$(uname -m)" in
+  "x86_64")
+    arch="amd64"
+    ;;
+  "aarch64")
+    arch="arm64"
+    ;;
+  esac
+
+  asset="kubelogin-${platform}-${arch}.zip"
+
+  url="${GH_REPO}/releases/download/${version}/${asset}"
 
   echo "* Downloading $TOOL_NAME release $version..."
   curl "${curl_opts[@]}" -o "$filename" -C - "$url" || fail "Could not download $url"
@@ -61,7 +79,6 @@ install_version() {
     mkdir -p "$install_path"
     cp -r "$ASDF_DOWNLOAD_PATH"/* "$install_path"
 
-    # TODO: Assert kubelogin executable exists.
     local tool_cmd
     tool_cmd="$(echo "$TOOL_TEST" | cut -d' ' -f1)"
     test -x "$install_path/$tool_cmd" || fail "Expected $install_path/$tool_cmd to be executable."
