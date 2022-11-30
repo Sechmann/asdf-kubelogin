@@ -1,6 +1,6 @@
 <div align="center">
 
-# asdf-kubelogin [![Build](https://github.com/Sechmann/asdf-kubelogin/actions/workflows/build.yml/badge.svg)](https://github.com/Sechmann/asdf-kubelogin/actions/workflows/build.yml) [![Lint](https://github.com/Sechmann/asdf-kubelogin/actions/workflows/lint.yml/badge.svg)](https://github.com/Sechmann/asdf-kubelogin/actions/workflows/lint.yml)
+# asdf-kubelogin [![Build](https://github.com/sechmann/asdf-kubelogin/actions/workflows/build.yml/badge.svg)](https://github.com/sechmann/asdf-kubelogin/actions/workflows/build.yml) [![Lint](https://github.com/sechmann/asdf-kubelogin/actions/workflows/lint.yml/badge.svg)](https://github.com/sechmann/asdf-kubelogin/actions/workflows/lint.yml)
 
 [kubelogin](https://github.com/Azure/kubelogin) plugin for the
 [asdf version manager](https://asdf-vm.com).
@@ -25,7 +25,7 @@ Plugin:
 ```shell
 asdf plugin add kubelogin
 # or
-asdf plugin add kubelogin https://github.com/Sechmann/asdf-kubelogin.git
+asdf plugin add kubelogin https://github.com/sechmann/asdf-kubelogin.git
 ```
 
 kubelogin:
@@ -52,8 +52,8 @@ how to install & manage versions.
 Contributions of any kind welcome! See the
 [contributing guide](contributing.md).
 
-[Thanks goes to these contributors](https://github.com/Sechmann/asdf-kubelogin/graphs/contributors)!
+[Thanks goes to these contributors](https://github.com/sechmann/asdf-kubelogin/graphs/contributors)!
 
 # License
 
-See [LICENSE](LICENSE) © [Vegar Sechmann Molvig](https://github.com/Sechmann/)
+See [LICENSE](LICENSE) © [Vegar Sechmann Molvig](https://github.com/sechmann/)
