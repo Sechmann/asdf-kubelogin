@@ -34,7 +34,7 @@ list_all_versions() {
 }
 
 download_release() {
-  local version filename url
+  local version filename url platform arch
   version="$1"
   filename="$2"
   platform="unsupported" # filled by `case` below
@@ -60,7 +60,7 @@ download_release() {
 
   asset="kubelogin-${platform}-${arch}.zip"
 
-  url="${GH_REPO}/releases/download/${version}/${asset}"
+  url="${GH_REPO}/releases/download/v${version}/${asset}"
 
   echo "* Downloading $TOOL_NAME release $version..."
   curl "${curl_opts[@]}" -o "$filename" -C - "$url" || fail "Could not download $url"
