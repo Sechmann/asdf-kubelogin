@@ -56,6 +56,9 @@ download_release() {
   "aarch64")
     arch="arm64"
     ;;
+  "arm64")
+    arch="arm64"
+    ;;
   esac
 
   asset="kubelogin-${platform}-${arch}.zip"
